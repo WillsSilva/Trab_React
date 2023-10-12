@@ -1,0 +1,56 @@
+.app-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .app-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .book-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .book-item {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #203aa0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-title {
+    font-weight: bold;
+  }
+  
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+  
+  .error-container {
+    color: #ff0000;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  #Excluir{
+    background-color: #b82834;
+    margin-left: 10px;
+  }
+
+  #Editar{
+    background-color: #ceb42f;
+    margin-left: 30px;
+  }
+
+  #Add{
+    background-color: #2ac632;
+    width: 740px;
+  }
+  
