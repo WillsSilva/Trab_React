@@ -30,7 +30,7 @@ const Editar = () => {
   };
 
   const handleCancel = () => {
-    navigate(-1); // Navegar de volta uma página
+    navigate(-1);
   };
 
   const handleSubmit = (e) => {
@@ -53,7 +53,6 @@ const Editar = () => {
 
   const handleSuccessfulSubmit = (responseData) => {
     setEditedBook({});
-    // Você provavelmente precisará de alguma lógica para redirecionar para a página desejada após o sucesso
   };
 
   const formattedDate = editedBook.publishDate
@@ -71,10 +70,10 @@ const Editar = () => {
         <textarea id="description" name="description" rows={5} value={editedBook.description || ''} onChange={handleInputChange} />
 
         <label htmlFor="title">Numero de páginas:</label>
-        <input type="text" id="Paginas" name="Paginas" value={editedBook.pageCount || ''} onChange={handleInputChange} />
+        <input type="number" id="pages" name="pageCount" value={editedBook.pageCount || ''} onChange={handleInputChange}  min={0} step={1}/>
 
         <label htmlFor="excerto">Excerto:</label>
-        <textarea id="excerto" name="excerto" rows={10} value={editedBook.excerpt || ''} onChange={handleInputChange} />
+        <textarea id="excerto" name="excerpt" rows={10} value={editedBook.excerpt || ''} onChange={handleInputChange} />
 
         <label htmlFor="title">Data da publicação:</label>
         <input type="datetime-local" id="publishDate" name="publishDate" value={formattedDate} onChange={handleInputChange} />
