@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useFindBooks } from './useFindBooks';
-//import './App2.css';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
-//erro 
+const Home = () => {
+  const { data, loading, error } = useFindBooks();
+  const navigate = useNavigate();
 
-const home = () => {
+  if (loading) return <LoadingSpinner />;
+  if (error) return <ErrorDisplay error={error} />;
 
-    const { data, loading, error } = useFindBooks();
-    const [selectedBook, setSelectedBook] = useState(null);
+  const onEditBook = (id) => {
+    navigate(`/editar/${id}`);
+  };
 
-    if (loading) return <LoadingSpinner />;
-    if (error) return <ErrorDisplay error={error} />;
-
-    const openBookCard = (book) => {
-        setSelectedBook(book);
-    };
+  const onAddBook = () => {
+    navigate('/editar'); 
+  };
 
   return (
     <div className="app-container">
       <h1 className="app-title">Lista de Livros</h1>
-      <button id="Add">Adicionar</button>
+      <button id="Add" onClick={onAddBook} >Adicionar</button>
       <ul className="book-list">
         {data &&
           data.length > 0 &&
@@ -29,21 +30,14 @@ const home = () => {
               key={item.id}
               title={item.title}
               description={item.description}
-              onEdit={() => openBookCard(item)}
-              onDelete={() => onDeleteBook(item.id)} // Correção aqui
+              onEdit={() => onEditBook(item.id)}
+              onDelete={() => onDeleteBook(item.id)}
             />
           ))}
       </ul>
-      {selectedBook && (
-        <BookCard
-          title={selectedBook.title}
-          description={selectedBook.description}
-          onClose={() => setSelectedBook(null)}
-        />
-      )}
     </div>
   );
-}
+};
 
 function LoadingSpinner() {
   return (
@@ -61,34 +55,24 @@ function BookItem({ title, description, onDelete, onEdit }) {
   return (
     <li className="book-item">
       <strong className="book-title">{title}:</strong> {description}
-      <button onClick={onEdit} id="Editar">Editar</button>
+      <button onClick={onEdit} id="Editar">
+        <Link to="/" id="EditarL">Editar</Link>
+      </button>
       <button onClick={onDelete} id="Excluir">Excluir</button>
     </li>
   );
 }
 
-function BookCard({ title, description, onClose }) {
-  return (
-    <div className="book-card">
-      <h2>{title}</h2>
-      <p>{description}</p>
-      <button onClick={onClose}>Fechar</button>
-    </div>
-  );
-}
-
 function onDeleteBook(id) {
-  // Implemente a lógica de exclusão do livro aqui
   axios.delete(`https://fakerestapi.azurewebsites.net/api/v1/Books/${id}`)
     .then(response => {
-      // Faça algo com a resposta, se necessário
       console.log(response.status);
+      alert("Livro apagado!");
     })
     .catch(error => {
-      // Trate os erros, se houver
       console.error(error);
+      alert("Erro ao apagar o livro!")
     });
 }
 
-
-export default home;
+export default Home;

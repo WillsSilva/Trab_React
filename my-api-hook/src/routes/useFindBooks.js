@@ -11,7 +11,7 @@ export function useFindBooks() {
     async function listBooksuseFindBooks() {
         try {
 
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await new Promise(resolve => setTimeout(resolve, 2300));
 
             const result = await
                 axios.get('https://fakerestapi.azurewebsites.net/api/v1/Books');
