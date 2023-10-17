@@ -70,6 +70,8 @@ button:focus-visible {
 
 .book-title {
   font-weight: bold;
+  font-size: 20px;
+  
 }
 
 .loading-container {
@@ -96,12 +98,17 @@ button:focus-visible {
 
 #Editar{
   background-color: #ceb42f;
-  margin-left: 30px;
+  margin-left: 10px;
   text-decoration: none;
 }
 
 #Editar:hover{
   background-color: #ffd500;
+
+}
+
+#MostarOcultar{
+  margin-left: 30px;
 
 }
 
@@ -126,7 +133,15 @@ button:focus-visible {
   width: 740px;
 }
 
+#description{
+  max-width: 500px;
+}
+
 /* Editar css */
+
+.error-message{
+  color: #ff0000;
+}
 
 .edit-book-form {
   max-width: 400px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFindBooks } from './useFindBooks';
+import { useFindBooks } from './../hooks/useFindBooks';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -52,13 +52,21 @@ function ErrorDisplay({ error }) {
 }
 
 function BookItem({ title, description, onDelete, onEdit }) {
+  const [showDescription, setShowDescription] = React.useState(false);
+
+  const toggleDescription = () => {
+    setShowDescription(!showDescription);
+  }
+
   return (
     <li className="book-item">
-      <strong className="book-title">{title}:</strong> {description}
+      <strong className="book-title">{title}</strong>
+      {showDescription && <p className="book-description">{description}</p>}
+      <button onClick={toggleDescription} id="MostarOcultar">Mostrar/Esconder Descrição</button>
       <button onClick={onEdit} id="Editar">
         <Link to="/" id="EditarL">Editar</Link>
       </button>
-      <button onClick={onDelete} id="Excluir">Excluir</button>
+      <button onClick={onDelete} id="Excluir">Excluir</button>          
     </li>
   );
 }
