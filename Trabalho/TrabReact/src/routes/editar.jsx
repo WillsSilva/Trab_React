@@ -57,7 +57,7 @@ const Editar = () => {
         axios[method](apiUrl, editedBook)
           .then((response) => {
             console.log(response.status);
-            handleSuccessfulSubmit(response.data);
+            if (response.status = '200') alert ("Salvo!");
           })
           .catch((error) => {
             console.error(error);
@@ -70,10 +70,6 @@ const Editar = () => {
         });
         setValidationErrors(errors);
       });
-  };
-
-  const handleSuccessfulSubmit = (responseData) => {
-    // Lógica a ser executada após um envio bem-sucedido
   };
 
   const formattedDate = editedBook.publishDate
