@@ -7,9 +7,9 @@ POST {{baseUrl}}/api/Books
 Content-Type: application/json
 
 {
-    "title": "Teste",
-    "description": "Curso Superior de Agronomia",
-    "pageCount": 100,
+    "title": "Livro teste 3",
+    "description": "Algum texto aleatorio",
+    "pageCount": 50,
     "excerpt": "Testa livro"
 }
 
@@ -22,13 +22,13 @@ PUT {{baseUrl}}/api/Books/656e88577ec6b0453921a293
 Content-Type: application/json
 
 {
-    "title": "Teste",
-    "description": "Curso Superior de ADS",
+    "title": "Livro teste",
+    "description": "Varios tipos de conteudo",
     "pageCount": 100,
     "excerpt": "Testa livro"
 }
 
 ### Exclui uma conta específica
-DELETE {{baseUrl}}/api/Books/656e85059662a7f76a9a5328
+DELETE {{baseUrl}}/api/Books/6570a51440add72b862986bb
 
 
