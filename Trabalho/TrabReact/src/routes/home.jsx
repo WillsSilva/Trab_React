@@ -72,7 +72,7 @@ function BookItem({ title, description, onDelete, onEdit }) {
 }
 
 function onDeleteBook(id) {
-  axios.delete(`https://fakerestapi.azurewebsites.net/api/v1/Books/${id}`)
+  axios.delete(`http://localhost:3000/api/Books/${id}`)
     .then(response => {
       console.log(response.status);
       alert("Livro apagado!");

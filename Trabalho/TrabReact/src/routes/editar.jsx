@@ -22,7 +22,7 @@ const Editar = () => {
   useEffect(() => {
     if (id) {
       setIsEditing(true);
-      axios.get(`https://fakerestapi.azurewebsites.net/api/v1/Books/${id}`)
+      axios.get(`http://localhost:3000/api/Books/${id}`)
         .then((response) => {
           setEditedBook(response.data);
         })
@@ -49,8 +49,8 @@ const Editar = () => {
     validationSchema.validate(editedBook, { abortEarly: false })
       .then(() => {
         const apiUrl = isEditing
-          ? `https://fakerestapi.azurewebsites.net/api/v1/Books/${id}`
-          : 'https://fakerestapi.azurewebsites.net/api/v1/Books';
+          ? `http://localhost:3000/api/Books/${id}`
+          : 'http://localhost:3000/api/Books';
 
         const method = isEditing ? 'put' : 'post';
 
